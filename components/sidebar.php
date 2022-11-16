@@ -20,12 +20,6 @@
                 <span class="menu-title">Transport</span>
             </a>
         </li>
-         
-    
-        
-        
-        
-        
        
         <li class="nav-item sidebar-user-actions">
             <div class="user-details">
