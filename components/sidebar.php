@@ -1,7 +1,7 @@
 <!-- partial:partials/_sidebar.html -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <ul class="nav">
-         
+
         <li class="nav-item">
             <a class="nav-link" href="index.php">
                 <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
@@ -20,7 +20,7 @@
                 <span class="menu-title">Transport</span>
             </a>
         </li>
-       
+
         <li class="nav-item sidebar-user-actions">
             <div class="user-details">
                 <div class="d-flex justify-content-between align-items-center">
@@ -45,14 +45,25 @@
                 </a>
             </div>
         </li>
-     
-        <li class="nav-item sidebar-user-actions">
+
+        <li id='logoutBtn' class="nav-item sidebar-user-actions">
             <div class="sidebar-user-menu">
                 <a href="#" class="nav-link"><i class="mdi mdi-logout menu-icon"></i>
                     <span class="menu-title">Log Out</span></a>
             </div>
         </li>
     </ul>
+
+    <script>
+        document.getElementById("logoutBtn").onclick = function() {
+
+
+            <?php
+            session_destroy();
+
+            ?>
+        };
+    </script>
 </nav>
 
 <!-- partial -->

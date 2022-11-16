@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>VBS-MINING-TRANSIT</title>
-  <!-- plugins:css -->
-  <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css">
-  <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css">
-  <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css">
-  <!-- endinject -->
-  <!-- Plugin css for this page -->
-  <!-- End plugin css for this page -->
-  <!-- inject:css -->
-  <!-- endinject -->
-  <!-- Layout styles -->
-  <link rel="stylesheet" href="assets/css/style.css">
-  <!-- End layout styles -->
-  <link rel="shortcut icon" href="assets/images/favicon.png" />
-</head>
+session_start();
+?>
 
-<body>
+
+<?php
+include('variables.php');
+if (isset($_POST['email'])  && isset($_POST['password'])) {
+  foreach ($administrators as $user) {
+    //Administrateurs trouvés
+    if ($user['email'] == $_POST['email'] &&  $user['password'] == $_POST['password']) {
+
+      //Enregistrement de l'email de l'utilisateur dans la session
+
+      $_SESSION['LOGGED_USER'] = $user['email'];
+    }
+  }
+} else {
+}
+?>
+<?php
+if (!isset($_SESSION['LOGGED_USER'])) :;
+
+?>
+
   <div class="container-scroller">
     <div class="container-fluid page-body-wrapper full-page-wrapper">
       <div class="content-wrapper d-flex align-items-center auth">
@@ -33,15 +35,15 @@
               </div>
               <h4>Salut ! soyez les bienvenu.</h4>
               <h6 class="font-weight-light">Connectez-vous pour continuer.</h6>
-              <form class="pt-3">
+              <form class="pt-3" method="post" action="login.php">
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Nom d'utilisateur">
+                  <input type="email" class="form-control form-control-lg" id="exampleInputEmail1" placeholder="Adresse email" name="email">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Mot de passe">
+                  <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Mot de passe" name="password">
                 </div>
                 <div class="mt-3">
-                  <a class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" href="index.php">SE CONNECTER</a>
+                  <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" type="submit"><a>SE CONNECTER</a></button>
                 </div>
                 <div class="my-2 d-flex justify-content-between align-items-center">
                   <div class="form-check">
@@ -57,23 +59,14 @@
           </div>
         </div>
       </div>
-      
+
       <!-- content-wrapper ends -->
     </div>
-  
+
     <!-- page-body-wrapper ends -->
   </div>
-  <!-- container-scroller -->
-  <!-- plugins:js -->
-  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-  <!-- endinject -->
-  <!-- Plugin js for this page -->
-  <!-- End plugin js for this page -->
-  <!-- inject:js -->
-  <script src="assets/js/off-canvas.js"></script>
-  <script src="assets/js/hoverable-collapse.js"></script>
-  <script src="assets/js/misc.js"></script>
-  <!-- endinject -->
-</body>
 
-</html>
+<?php else :; ?>
+
+
+<?php endif ?>
