@@ -36,7 +36,7 @@
                                 <img src="assets/images/faces/face28.png" alt="image">
                             </div>
                             <div class="sidebar-profile-text">
-                                <p class="mb-1">Henry Klein</p>
+                                <p class="mb-1">Admin</p>
                             </div>
                         </div>
                     </div>
